@@ -10,22 +10,34 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
+from .. import const
+from ..const import CONFIG
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
-
+VERSION = const.VERSION
+BASE_DIR = const.BASE_DIR
+PROJECT_DIR = const.PROJECT_DIR
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-3(qn9)!@9s$6c77ghu^#8r(^#!1!otp#3d19$o)2fad5-9pjol'
+SECRET_KEY = CONFIG.SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = CONFIG.DEBUG
 
-ALLOWED_HOSTS = []
+# Absolute url for some case, for example email link, example: http://www.example.com
+SITE_URL = CONFIG.SITE_URL
+
+# LOG LEVEL
+LOG_LEVEL = CONFIG.LOG_LEVEL
+
+# Max post update field num， default 1000
+DATA_UPLOAD_MAX_NUMBER_FIELDS = 10000
+
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -103,9 +115,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = CONFIG.LANGUAGE_CODE
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = CONFIG.TIME_ZONE
 
 USE_I18N = True
 
